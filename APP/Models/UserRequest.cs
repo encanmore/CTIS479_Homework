@@ -1,14 +1,13 @@
-﻿using CORE.APP.Domain;
+﻿using CORE.APP.Models;
 
-namespace APP.Domain
+namespace APP.Models
 {
-    public class User : Entity
+    public class UserRequest : Request
     {
         public string UserName { get; set; }
         public string Password { get; set; }
         public string? FirstName { get; set; }
         public string? LastName { get; set; }
-        // public Genders Gender { get; set; }
         public DateTime? BirthDate { get; set; }
         public DateTime RegistrationDate { get; set; }
         public decimal Score { get; set; }
