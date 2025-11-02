@@ -5,30 +5,30 @@ using APP.Models;
 
 namespace MVC.Controllers
 {
-    public class UserController : Controller
+    public class RoleController : Controller
     {
-        private readonly UserService _userService;
+        private readonly RoleService _roleService;
 
-        public UserController(UserService userService)
+        public RoleController(RoleService roleService)
         {
-            _userService = userService;
+            _roleService = roleService;
         }
 
         public IActionResult Index()
         {
-            var list = _userService.Query<User>().ToList();
+            var list = _roleService.Query<Role>().ToList();
 
-            ViewBag.Count = list.Count == 0 ? "No users found!" : list.Count == 1 ? "1 user found." : $"{list.Count} users found.";
+            ViewBag.Count = list.Count == 0 ? "No roles found!" : list.Count == 1 ? "1 role found." : $"{list.Count} roles found.";
 
             return View(list);
         }
 
         public IActionResult Details(int id)
         {
-            var item = _userService.Query<User>().SingleOrDefault(user => user.Id == id);
+            var item = _roleService.Query<Role>().SingleOrDefault(role => role.Id == id);
 
             if (item is null)
-                ViewBag.Message = "User not found!";
+                ViewBag.Message = "Role not found!";
 
             return View(item);
         }
@@ -40,11 +40,11 @@ namespace MVC.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create(UserRequest request)
+        public IActionResult Create(RoleRequest request)
         {
             if (ModelState.IsValid)
             {
-                var response = _userService.Create(request);
+                var response = _roleService.Create(request);
 
                 if (response.IsSuccessful)
                 {
@@ -61,20 +61,20 @@ namespace MVC.Controllers
 
         public IActionResult Edit(int id)
         {
-            var request = _userService.Edit(id);
+            var request = _roleService.Edit(id);
 
             if (request is null)
-                ViewBag.Message = "User not found!";
+                ViewBag.Message = "Role not found!";
 
             return View(request);
         }
 
         [HttpPost]
-        public IActionResult Edit(UserRequest request)
+        public IActionResult Edit(RoleRequest request)
         {
             if (ModelState.IsValid)
             {
-                var response = _userService.Update(request);
+                var response = _roleService.Update(request);
 
                 if (response.IsSuccessful)
                     return RedirectToAction(nameof(Details), new { id = response.Id });
@@ -87,7 +87,7 @@ namespace MVC.Controllers
 
         public IActionResult Delete(int id)
         {
-            var response = _userService.Delete(id);
+            var response = _roleService.Delete(id);
 
             TempData["Message"] = response.Message;
 
