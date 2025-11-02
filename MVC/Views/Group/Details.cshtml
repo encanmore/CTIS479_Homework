@@ -1,0 +1,23 @@
+﻿@using APP.Models
+@model GroupResponse
+
+@{
+    ViewBag.Title = "Group Details";
+}
+
+<h1>@ViewBag.Title</h1>
+
+<p class="text-success">
+    @ViewBag.Message
+</p>
+
+@if (Model is not null)
+{
+
+    <dl>
+        <dt>@Html.DisplayNameFor(groupResponse => groupResponse.Title)</dt>
+        <dd>@Html.DisplayFor(groupResponse => groupResponse.Title)</dd>
+    </dl>
+}
+<hr />
+<a asp-action="Index" class="btn btn-outline-dark">Back to Group List</a>

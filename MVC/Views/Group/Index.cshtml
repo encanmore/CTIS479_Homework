@@ -1,0 +1,49 @@
+﻿@using APP.Models
+@model IEnumerable<GroupResponse>
+
+@{
+    ViewBag.Title = "Group List";
+}
+
+<h1>@ViewBag.Title</h1>
+
+<p class="text-success">
+    @ViewBag.Count
+</p>
+
+@if (TempData["Message"] is not null)
+{
+    <p class="bg-warning text-black">
+        @TempData["Message"]
+    </p>
+}
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(groupResponse => groupResponse.Title)
+        </th>
+        <th>
+            Operation Links
+        </th>
+    </tr>
+    @foreach (GroupResponse item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(categoryResponse => item.Title)
+
+            </td>
+            <td>
+                <a asp-action="Details" asp-route-id="@item.Id">Group Details</a>
+
+                &nbsp;
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit Group</a>
+                &nbsp;
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete Group</a>
+            </td>
+        </tr>
+    }
+</table>
+<hr />
+<a asp-action="Create">Create New Group</a>
