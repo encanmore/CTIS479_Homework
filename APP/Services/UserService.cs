@@ -26,7 +26,7 @@ namespace APP.Services
                 FirstName = u.FirstName,
                 LastName = u.LastName,
                 BirthDate = u.BirthDate,
-                RegistrationDate = u.RegistrationDate,
+                RegistrationDate = DateTime.Now,
                 Score = u.Score,
                 IsActive = u.IsActive,
                 Address = u.Address,

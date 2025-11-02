@@ -59,7 +59,7 @@ namespace APP.Services
             var entity = Query(false).SingleOrDefault(g => g.Id == request.Id);
 
             if (entity is null)
-                return Error("Student not found!");
+                return Error("Group not found!");
 
 
             entity.Title = request.Title;

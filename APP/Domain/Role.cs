@@ -1,6 +1,8 @@
-﻿namespace APP.Domain
+﻿using CORE.APP.Domain;
+
+namespace APP.Domain
 {
-    public class Role
+    public class Role : Entity
     {
         public string Name { get; set; }
     }
