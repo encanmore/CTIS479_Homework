@@ -3,9 +3,6 @@ using APP.Models;
 using CORE.APP.Models;
 using CORE.APP.Services;
 using Microsoft.EntityFrameworkCore;
-using System.Net;
-using System.Text.RegularExpressions;
-using static System.Formats.Asn1.AsnWriter;
 
 namespace APP.Services
 {
